@@ -1,0 +1,215 @@
+/*
+ * Site-level style overrides, loaded after the gem stylesheets by
+ * _plugins/site_custom_css.rb. Kept as plain CSS because this repo may not own
+ * a _sass/ directory (see test/style_contract.js).
+ */
+
+/* ---------- Theme color: light blue instead of the default purple ---------- */
+
+:root {
+  --global-theme-color: #3d9be9;
+  --global-hover-color: #3d9be9;
+  --global-code-bg-color: rgba(61, 155, 233, 0.06);
+}
+
+html[data-theme="dark"] {
+  --global-theme-color: #7cc4f5;
+  --global-hover-color: #7cc4f5;
+}
+
+/* ---------- CV: shared entry layout ---------- */
+
+.cv .card {
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.cv .card .card-title {
+  color: var(--global-theme-color);
+  font-weight: 600;
+}
+
+.cv ul.list-group {
+  list-style: none;
+  padding-left: 0;
+}
+
+.cv ul.list-group > li::marker {
+  content: "";
+}
+
+.cv .card .list-group-item {
+  padding: 1.1rem 0.25rem;
+}
+
+/* The gem shifts the date column 15px left (translateX), which pushes the date
+   badge and logo past the section title; keep it on the same edge as the
+   publication teasers instead. */
+.cv .date-column {
+  transform: none;
+}
+
+.cv table.table-cv {
+  width: 100%;
+  margin: 0;
+}
+
+.cv table.table-cv td {
+  border-top: none;
+  padding: 0;
+}
+
+.cv-date-badge {
+  display: block;
+  width: 100%;
+  padding: 0.35em 0.4em;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: var(--global-bg-color) !important;
+  background-color: var(--global-theme-color) !important;
+}
+
+.cv .cv-entry-title {
+  margin-bottom: 0.2rem;
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.cv .cv-entry-org {
+  margin-bottom: 0.2rem;
+  font-size: 0.92rem;
+  color: var(--global-text-color);
+}
+
+.cv .cv-entry-summary {
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--global-text-color-light);
+}
+
+/* ---------- CV: organization logo tile under the date badge ---------- */
+
+/* Square tile, centered under the date badge; both logos are square marks. */
+.cv .cv-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0.65rem auto 0;
+  padding: 6px;
+  background-color: #fff;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.cv .cv-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ---------- Publications (CV, publications page, about page) ---------- */
+
+.cv-pub-standalone .cv-pub-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.cv-pub-standalone .cv-pub-list > .list-group-item {
+  padding: 1.25rem 0;
+  background-color: transparent;
+  border-color: var(--global-divider-color);
+  border-left: none;
+  border-right: none;
+}
+
+.cv-pub-standalone .cv-pub-list > .list-group-item:first-child {
+  border-top: none;
+}
+
+.cv-pub-media {
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .cv-pub-media {
+    margin-bottom: 0;
+  }
+}
+
+.cv-pub-teaser {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  padding: 30px 10px 10px;
+  background-color: #fff;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.cv-pub-teaser img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+.cv-pub-year {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: auto;
+  padding: 0.3em 0.75em;
+  z-index: 1;
+}
+
+.cv-pub-title {
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.cv-pub-meta {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.cv-pub-authors strong {
+  color: var(--global-text-color);
+}
+
+.cv-pub-venue {
+  font-style: italic;
+  color: var(--global-text-color-light);
+}
+
+.cv-pub-link {
+  display: inline-block;
+  margin: 0.3rem 0.4rem 0 0;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.78rem;
+  border: 1px solid var(--global-theme-color);
+  border-radius: 999px;
+  color: var(--global-theme-color);
+}
+
+.cv-pub-link:hover {
+  background-color: var(--global-theme-color);
+  color: #fff;
+  text-decoration: none;
+}
