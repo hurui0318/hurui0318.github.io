@@ -4,9 +4,9 @@ permalink: /cv/
 title: CV
 nav: true
 nav_order: 5
-cv_pdf: /assets/pdf/example_pdf.pdf # you can also use external links here
+# cv_pdf: /assets/pdf/your_cv.pdf # uncomment and point to your own CV PDF to show the download button
 cv_format: rendercv # options: rendercv, jsonresume
-description: This is a description of the page. You can modify it in '_pages/cv.md'. You can also change or remove the top pdf download button.
+description: Senior R&D Engineer at Baidu, working on speech synthesis, speech recognition, and natural language processing.
 toc:
   sidebar: left
 ---

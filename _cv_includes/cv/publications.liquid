@@ -1,0 +1,107 @@
+{% comment %}
+  Local override of al_folio_cv's cv/publications.liquid.
+
+  Also reused outside the CV page: _pages/publications.md and the
+  selected_papers.liquid override (about page) assign `entries` from
+  site.data.cv and include this file, so all three show papers the same way.
+
+  Differences from the gem template:
+  - The title is never a link.
+  - A teaser figure from _data/cv_publication_teasers.yml sits in a fixed-ratio
+    tile to the left of the text (stacked above it on narrow screens), with the
+    year badge pinned to the tile's top-left corner. Clicking it zooms in
+    (medium-zoom, enabled site-wide by `enable_medium_zoom`).
+  - Below the title, three items are rendered in this order:
+      1. authors, with the CV owner's name in bold
+      2. publisher
+      3. paper links: `url` (arXiv / Paper), then `doi` (ISCA / DOI), then any
+         extra buttons (e.g. Demo) from _data/cv_publication_links.yml
+  Link labels are derived from the publisher and URL, so only RenderCV fields
+  are needed in _data/cv.yml. Styling lives in assets/css/custom.css.
+{% endcomment %}
+
+<ul class="card-text font-weight-light list-group list-group-flush cv-pub-list">
+  {% for entry in entries %}
+    <li class="list-group-item">
+      <div class="row">
+        {% capture pub_date %}
+          {% if entry.releaseDate %}{{ entry.releaseDate }}{% elsif entry.date %}{{ entry.date }}{% endif %}
+        {% endcapture %}
+        {% assign pub_date = pub_date | strip %}
+        {% assign entry_teaser = '' %}
+        {% for teaser in site.data.cv_publication_teasers %}
+          {% if entry.title contains teaser.match %}
+            {% assign entry_teaser = teaser.image %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+        <div class="col-md-4 cv-pub-media">
+          {% if entry_teaser != '' %}
+            <div class="cv-pub-teaser">
+              {% if pub_date != '' %}
+                <span class="badge font-weight-bold cv-date-badge cv-pub-year">{{ pub_date | split: '-' | first }}</span>
+              {% endif %}
+              <img
+                src="{{ '/assets/img/publication_teaser/' | append: entry_teaser | relative_url }}"
+                alt="Teaser figure for {{ entry.title | default: entry.name | escape }}"
+                loading="lazy"
+                data-zoomable
+              >
+            </div>
+          {% elsif pub_date != '' %}
+            <span class="badge font-weight-bold cv-date-badge">{{ pub_date | split: '-' | first }}</span>
+          {% endif %}
+        </div>
+        <div class="col-md-8">
+          <h6 class="title cv-pub-title">{{ entry.title | default: entry.name }}</h6>
+
+          <ul class="cv-pub-meta">
+            {% if entry.authors %}
+              <li class="cv-pub-authors">
+                {%- for author in entry.authors -%}
+                  {%- assign author_name = author | strip -%}
+                  {%- if author_name == site.data.cv.cv.name -%}
+                    <strong>{{ author_name }}</strong>
+                  {%- else -%}
+                    {{ author_name }}
+                  {%- endif -%}
+                  {%- unless forloop.last %}, {% endunless -%}
+                {%- endfor -%}
+              </li>
+            {% endif %}
+
+            {% if entry.publisher %}
+              <li class="cv-pub-venue">{{ entry.publisher }}</li>
+            {% endif %}
+
+            {% assign extra_links = site.data.cv_publication_links | where_exp: 'link', 'entry.title contains link.match' %}
+            {% if entry.url or entry.doi or extra_links.size > 0 %}
+              <li class="cv-pub-links">
+                {%- if entry.url -%}
+                  {%- if entry.url contains 'arxiv.org' -%}
+                    {%- assign link_label = 'arXiv' -%}
+                  {%- else -%}
+                    {%- assign link_label = 'Paper' -%}
+                  {%- endif -%}
+                  <a class="cv-pub-link" href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">{{ link_label }}</a>
+                {%- endif -%}
+                {%- if entry.doi -%}
+                  {%- assign publisher_text = entry.publisher | downcase -%}
+                  {%- if publisher_text contains 'interspeech' -%}
+                    {%- assign doi_label = 'ISCA' -%}
+                  {%- else -%}
+                    {%- assign doi_label = 'DOI' -%}
+                  {%- endif -%}
+                  <a class="cv-pub-link" href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener noreferrer">{{ doi_label }}</a>
+                {%- endif -%}
+                {%- for link in extra_links -%}
+                  <a class="cv-pub-link" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
+                {%- endfor -%}
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </li>
+  {% endfor %}
+</ul>

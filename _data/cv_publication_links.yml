@@ -1,0 +1,6 @@
+# Extra link buttons shown after a publication's arXiv / ISCA links.
+# Every entry whose `match` text appears in the paper title is added, in order.
+# Kept outside _data/cv.yml because RenderCV has no field for these links.
+- match: Transcript-Prompted
+  label: Demo
+  url: https://hurui0318.github.io/japanese-annotator-demo/

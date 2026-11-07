@@ -2,16 +2,14 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: "Senior R&D Engineer at <a href='https://www.baidu.com' target='_blank' rel='noopener noreferrer'>Baidu Inc.</a> | franciskomizu@gmail.com"
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: profile_picture_1.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>Photo taken at the Amaharashi Coast (雨晴海岸), Toyama, Japan.</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
@@ -22,13 +20,11 @@ announcements:
   limit: 5 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
-  enabled: true
+  enabled: false # the _posts folder still holds template demo posts; set to true once it has real posts
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am Rui Hu (胡瑞), currently a Senior R&D Engineer at [Baidu Inc. (百度)](https://www.baidu.com), primarily working on speech and language processing. I graduated from Hong Yi Honors School (弘毅學堂) and School of Computer Science (計算機學院), [Wuhan University (武漢大學)](https://www.whu.edu.cn/), with a B.Eng. degree, advised by Prof. [Weiping Tu (涂衛平)](https://scholar.google.com/citations?user=fdiX7GIAAAAJ&hl=zh-CN&oi=ao).
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
-
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+I have a passional interest in speech techonologies, natural language processing, linguistics and language learning.

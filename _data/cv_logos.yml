@@ -1,0 +1,8 @@
+# Logo shown under the date badge of CV entries whose name contains `match`.
+# Used by _cv_includes/cv/experience.liquid and education.liquid.
+# Both marks are square so they fill the square logo tile equally:
+# baidu_paw.png is the paw icon cropped out of baidu_logo.jpg.
+- match: Baidu
+  image: baidu_paw.png
+- match: Wuhan University
+  image: whu_logo.png

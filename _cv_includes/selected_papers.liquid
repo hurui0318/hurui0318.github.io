@@ -1,0 +1,10 @@
+{% comment %}
+  Local override of al_folio_core's selected_papers.liquid (about page).
+
+  Renders the papers from _data/cv.yml with the CV publication template, so the
+  about page, the publications page, and the CV all look the same.
+{% endcomment %}
+{% assign entries = site.data.cv.cv.sections.Publications %}
+<div class="cv-pub-standalone">
+  {% include cv/publications.liquid %}
+</div>

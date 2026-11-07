@@ -1,0 +1,10 @@
+# Thumbnails shown next to each publication in the CV.
+# The first entry whose `match` text appears in the paper title wins.
+# The *_crop.png files are the original figures with the white margin and the
+# "Fig. N ..." caption removed, so they read well at thumbnail size.
+- match: Ruby-OPD
+  image: hu2026rubyopd_crop.png
+- match: Dictionary-Constrained
+  image: hu2026dictionary_crop.png
+- match: Transcript-Prompted
+  image: hu25_interspeech_crop.png
