@@ -14,15 +14,17 @@ name: "Lighthouse Badger"
 
 # INPUTS as Secrets (env) for not manually triggered workflows
 env:
-  URLS: https://alshedivat.github.io/al-folio/
+  URLS: https://hurui0318.github.io/
   # If any of the following env is blank, a default value is used instead
-  REPO_BRANCH: "${{ github.repository }} master" # target repository & branch e.g. 'dummy/mytargetrepo main'
+  REPO_BRANCH: "${{ github.repository }} main" # target repository & branch e.g. 'dummy/mytargetrepo main'
   MOBILE_LIGHTHOUSE_PARAMS: "--only-categories=performance,accessibility,best-practices,seo --throttling.cpuSlowdownMultiplier=2"
   DESKTOP_LIGHTHOUSE_PARAMS: "--only-categories=performance,accessibility,best-practices,seo --preset=desktop --throttling.cpuSlowdownMultiplier=1"
 
 # TRIGGERS
+# Manual only: running after every page build needs a LIGHTHOUSE_BADGER_TOKEN
+# secret (see docs/CUSTOMIZE.md), and without it every run fails at checkout.
 on:
-  page_build:
+  # page_build:
   # schedule: # Check your schedule here => https://crontab.guru/
   #   - cron: '55 23 * * 0' # e.g. every Sunday at 23:55
   #

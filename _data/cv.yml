@@ -1,18 +1,13 @@
 cv:
+  # Only RenderCV-supported fields here: the "Render a CV" workflow rejects
+  # unknown keys such as label, image, and address.
   name: Rui Hu
-  label: Senior R&D Engineer
   email: franciskomizu@gmail.com
   location: Shenzhen, China
-  image: ""
 
   social_networks:
     - network: GitHub
       username: hurui0318
-
-  address:
-    city: Shenzhen
-    region: China
-    countryCode: CN
 
   sections:
     # Hidden for now — kept here so the data can be restored later.
@@ -27,13 +22,19 @@ cv:
         start_date: 2020-06
         end_date: 2024-09
         highlights:
+          - "Core Courses: Computer Systems, Data Structures, Operating Systems, Computer Networks, Machine Learning, Intelligent Speech Processing"
           - "Advisor: Prof. Weiping Tu"
 
     Experience:
       - company: Baidu Inc., Shenzhen, China
         position: Senior R&D Engineer
         start_date: 2024-07
-        summary: Speech Synthesis, Speech Recognition, and Natural Language Processing.
+        summary: Building speech models for production.
+        highlights:
+          - Speech Synthesis
+          - Speech Recognition
+          - Natural Language Processing
+          - Voice Interaction
 
       - company: Baidu Inc., Shenzhen, China
         position: Speech Synthesis Intern
@@ -49,7 +50,7 @@ cv:
         position: Research Assistant
         start_date: 2021-09
         end_date: 2023-06
-        summary: Text-to-Speech, Voice Conversion, and Sleep Respiratory Event Detection.
+        summary: Research on speech speech synthesis and sleep respiratory vvent detection.
 
     # Hidden for now — kept here so the data can be restored later.
     # Awards:
